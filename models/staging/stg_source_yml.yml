@@ -90,3 +90,4 @@ models:
       -name: sellenddate
         description: >
         This column brings the date when the product became Unavailable.
+        
