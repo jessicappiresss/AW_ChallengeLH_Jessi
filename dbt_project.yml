@@ -35,9 +35,11 @@ models:
   awchallengelhjessi: # <-- Name of the project. If you renamed your project you have to change this as well
       staging:
         +materialized: tables
+        +schema : staging
 
       marts:
         +materialized: tables
+        +schema: marts
 
 seeds:
   awchallengelhjessi: # <-- Name of the project. If you renamed your project you have to change this as well
