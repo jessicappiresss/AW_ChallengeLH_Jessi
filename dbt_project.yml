@@ -34,12 +34,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   awchallengelhjessi: # <-- Name of the project. If you renamed your project you have to change this as well
       staging:
-        +materialized: tables
-        +schema : staging
+        materialized: table
+        schema : staging
 
       marts:
-        +materialized: tables
-        +schema: marts
+        materialized: table
+        schema: marts
 
 seeds:
   awchallengelhjessi: # <-- Name of the project. If you renamed your project you have to change this as well

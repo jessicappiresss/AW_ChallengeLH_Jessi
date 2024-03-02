@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: 'int_Product_Subcategory'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'int_Product_Subcategory'
+        description: 'This table brings the Pk of the subcategory type of the products'
+        columns:
+          - name: 'Pk_Productsubcategory'
+            description: 'This column is the Primery Key of this table, and comes from de column ProductsubcategoryId'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'ProductCategoryCode'
+            description: 'This column brings de Product Category Id, is the Forein Key of the table stg_erp_Product_Category '
+            tests:
+              - unique
+              - not_null
+
+          - name: 'ProductSubCategoryName'
+            description: 'This columns brings the description of the subcategory. Ex: Chain, Gloves, Socks'

@@ -1,12 +1,12 @@
 version: 2
 
 sources:
-    name: product
-    description: Dados aw
+  - name: 'production'
+    description: 'The source is from the Adventure Works repository'
     schema: sap_adw
     tables:
-      - name: product
-        description: product info
+      - name: 'product'
+        description: 'This tables brings general information of the products of the establishment'
         columns:
           - name: 'productid'
             description: 'This column brings the Id fo the products and is also de Primary Key of this table'
@@ -14,14 +14,15 @@ sources:
             - unique
             - not_null
 
-          - name: 'subcategorysubcategoryid'
-            description: 'This column brings the code of the product subcategory Id'
+          - name: 'subcategorysubcategoryCode'
+            description: 'This column brings the code of the product subcategory Id,
+              is a Foreing Key of the table Product_Subcategory'
             tests:
             - unique
             - not_null
 
-          - name: 'productmodelid'
-            description: 'This column brings the code of the product model Id' 
+          - name: 'productmodelCode'
+            description: 'This column brings the code of the product model Id, is a Foreing Key of the table Model' 
             tests:
               - unique
               - not_null
@@ -73,3 +74,34 @@ sources:
 
           - name: 'sellenddate'
             description: 'This column brings the date when the product became Unavailable'
+
+      - name: 'productcategory'
+        description: 'This table brings information of the category type of the products'
+        columns:
+          - name: 'productcategoryid'
+            description: 'This column is the Primery Key of this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'name'
+            description: 'This columns brings the description of the category. Ex: Components, Clothing, Acessories'
+
+      - name: 'productsubcategory'
+        description: 'This table brings information of the subcategory type of the products'
+        columns:
+          - name: 'productsubcategoryid'
+            description: 'This column is the Primery Key of this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'productcategoryCode'
+            description: 'This column brings de Product Category Id, is the Forein Key of the table stg_erp_Product_Category '
+            tests:
+              - unique
+              - not_null
+
+          - name: 'name'
+            description: 'This columns brings the description of the subcategory. Ex: Chain, Gloves, Socks'
+
