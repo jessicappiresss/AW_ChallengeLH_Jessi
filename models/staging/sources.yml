@@ -1,0 +1,75 @@
+version: 2
+
+sources:
+    name: product
+    description: Dados aw
+    schema: sap_adw
+    tables:
+      - name: product
+        description: product info
+        columns:
+          - name: 'productid'
+            description: 'This column brings the Id fo the products and is also de Primary Key of this table'
+            tests:
+            - unique
+            - not_null
+
+          - name: 'subcategorysubcategoryid'
+            description: 'This column brings the code of the product subcategory Id'
+            tests:
+            - unique
+            - not_null
+
+          - name: 'productmodelid'
+            description: 'This column brings the code of the product model Id' 
+            tests:
+              - unique
+              - not_null
+
+          - name: 'name'
+            description: 'This column brings the name of the product'
+
+          - name: 'productnumber'
+            description: 'This column brings the internal code of the product'
+
+          - name: 'makeflag'
+            description: This column brings the manufacturing type of the product'
+
+          - name: 'finishedgoodsflag'
+            description: 'This column brings the status of the product, it indicates when its ready for sale'
+
+          - name: 'color'
+            description: 'This column brings the color of the product'
+
+          - name: 'safetystocklevel'
+            description: 'This column brings the minimal level status in stock of the product'
+
+          - name: 'reorderpoint'
+            description: 'This column indicates the stocks level  point number to reorder product for stock'
+
+          - name: 'standardcost'
+            description: 'This column brings the product cost price'
+
+          - name: 'listprice'
+            description: 'This column brings the product sells price'
+
+          - name: 'size'
+            description: 'This column brings the dimensions of the product'
+
+          - name: 'daystomanufacture'
+            description: 'This column brings the needed totalo days to manufecture the product'
+
+          - name: 'productline'
+            description: 'This column brings the status of the final use of the product, for example, for road, for mountain'
+
+          - name: 'class'
+            description: 'This column brings the classification of the product in order to its quality as High, Medium and Low'
+
+          - name: 'style'
+            description: 'This column brings the gender of the product'
+
+          - name: 'sellstartdate'
+            description: 'This column brings the date of the start sells oh the product'
+
+          - name: 'sellenddate'
+            description: 'This column brings the date when the product became Unavailable'
