@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_erp_Product
-    tags: [ 'seeds', 'stg', 'erp', 'product']
+    tags: [ stg', 'erp', 'product']
     description: >
       Table stores information about products
     columns:
@@ -90,4 +90,4 @@ models:
       -name: sellenddate
         description: >
         This column brings the date when the product became Unavailable.
-        
+
