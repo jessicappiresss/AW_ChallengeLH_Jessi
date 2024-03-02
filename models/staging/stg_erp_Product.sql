@@ -11,7 +11,7 @@ with
                 when makeflag = false
                     then 'The product is internal manufactured'
                 else 'Unknown'
-            end as ManufactureType
+            end as ManufactureTypes
             , cast(finishedgoodsflag as string) as FinishedProductsFlag
             case 
                 when finishedgoodsflag = true
