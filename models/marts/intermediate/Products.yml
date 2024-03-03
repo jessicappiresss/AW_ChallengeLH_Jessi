@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: 'Products'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Products'
+        description: 'This table brings the Pk of the Products, and it is the principal table from Products. Also brings joins with the tables Product category ans subcategory(Fks).'
+        columns:
+          - name: 'Pk_Product'
+            description: 'This column is the Primery Key of this table, and comes from de column stg_erp_Product'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'Fk_Productsubcategory'
+            description: 'This column brings de Product Subcategory Pk, as the Forein Key of the table Product_Subcategory,
+              in this table is not aplicated the tests because, more the one product can have the same subcategory'
+
+          - name: 'Fk_ProductCategory'
+            description: 'This column brings de Product Category Pk, as the Forein Key of the table Product_Category,
+              in this table is not aplicated the tests because, more the one product can have the same subcategory'
+
+          - name: 'ProductName'
+            description: 'This column brings the name of the product'
+
+          - name: 'ProductSubCategoryName'
+            description: 'This columns brings the description of the subcategory. Ex: Chain, Gloves, Socks'
+
+          - name: 'ProductCategoryName'
+            description: 'This columns brings the description of the category. Ex: Components, Clothing, Acessories'
+
+          - name: 'ProductInternalCode'
+            description: 'This column brings the internal code of the product'
+
+          - name: 'ManufactureTypes'
+            description: This column brings the manufacturing type of the product'
+
+          - name: 'ReadyForSale'
+            description: 'This column brings the status of the product, it indicates when its ready for sale'
+
+          - name: 'ProductColor'
+            description: 'This column brings the color of the product'
+
+          - name: 'ProductMinimumStockQuantity'
+            description: 'This column brings the minimal level status in stock of the product'
+
+          - name: 'ProductReorderPoint'
+            description: 'This column indicates the stocks level  point number to reorder product for stock'
+
+          - name: 'ProductStandardCost'
+            description: 'This column brings the product cost price'
+
+          - name: 'ProductSellPrice'
+            description: 'This column brings the product sells price'
+
+          - name: 'ProductSize'
+            description: 'This column brings the dimensions of the product'
+
+          - name: 'ManufactureProductInDays'
+            description: 'This column brings the needed total of days to manufecture the product'
+
+          - name: 'ProductLineType'
+            description: 'This column brings the status of the final use of the product, for example, for road, for mountain'
+
+          - name: 'ProductClass'
+            description: 'This column brings the classification of the product in order to its quality as High, Medium and Low'
+
+          - name: 'ProductStyle'
+            description: 'This column brings the gender of the product'
+
+          - name: 'SellStartDate'
+            description: 'This column brings the date of the start sells oh the product'
+
+          - name: 'ProductUnavailableDate'
+            description: 'This column brings the date when the product became Unavailable'
+
+          - name: 'ProductSubcategoryCode'
+            description: 'This column brings the code of the product subcategory Id,
+              is a Foreing Key of the table Product_Subcategory'
+
+          - name: 'ProductModelCode'
+            description: 'This column brings the code of the product model Id, is a Foreing Key of the table Model' 

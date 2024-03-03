@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: 'Product_Category'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Product_Category'
+        description: 'This table brings the Pk of the subcategory type of the products'
+        columns:
+          - name: 'Pk_ProductCategory'
+            description: 'This column is the Primery Key of this table, and comes from de column ProductCategoryId'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'ProductCategoryName'
+            description: 'This columns brings the description of the category. Ex: Components, Clothing, Acessories'

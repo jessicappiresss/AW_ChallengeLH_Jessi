@@ -6,7 +6,7 @@ with
 
     , CreatingPk as (
         select
-            xxhash64(ProductsubcategoryId) as Pk_Productsubcategory
+            farm_fingerprint(cast(ProductsubcategoryId as string)) as Pk_Productsubcategory
             , *
         from ProductSubcategory
     )

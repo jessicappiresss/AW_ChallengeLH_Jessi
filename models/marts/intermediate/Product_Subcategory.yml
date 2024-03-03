@@ -1,11 +1,11 @@
 version: 2
 
 models:
-  - name: 'int_Product_Subcategory'
+  - name: 'Product_Subcategory'
     description: 'The source is from the Adventure Works repository'
     schema: sap_adw
     tables:
-      - name: 'int_Product_Subcategory'
+      - name: 'Product_Subcategory'
         description: 'This table brings the Pk of the subcategory type of the products'
         columns:
           - name: 'Pk_Productsubcategory'
@@ -22,3 +22,4 @@ models:
 
           - name: 'ProductSubCategoryName'
             description: 'This columns brings the description of the subcategory. Ex: Chain, Gloves, Socks'
+            
