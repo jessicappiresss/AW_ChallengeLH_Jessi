@@ -19,6 +19,7 @@ with
             ProductSubcategory.ProductSubcategoryId
             , ProductSubcategory.ProductSubCategoryName
             , ProductSubcategory.Pk_Productsubcategory
+            , ProductSubcategory.ProductCategoryCode
             , ProductPrincipalTable.*
         from ProductPrincipalTable
         left join ProductSubcategory
@@ -34,7 +35,7 @@ with
             , NewProductTableFirstJoin.*
         from NewProductTableFirstJoin
         left join ProductCategory
-            on NewProductTableFirstJoin.ProductSubcategoryCode
+            on NewProductTableFirstJoin.ProductCategoryCode
             = ProductCategory.ProductCategoryId
     )
 
