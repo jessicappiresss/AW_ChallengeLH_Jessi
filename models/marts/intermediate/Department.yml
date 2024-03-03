@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: 'Department'
+    description: 'This table brings the departament history from de employee'
+    schema: sap_adw
+    tables:
+      - name: 'Department'
+        description: 'This table brings the Pk of the subcategory type of the products'
+        columns:
+          - name: 'Pk_DepartmentEmployee'
+            description: 'This column is the Primery Key of this table, and comes from de column ProductCategoryId'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'DepartmentEmployeeId'
+            description: 'This columns brings the departament employee Id'
+
+          - name: 'DepartamentName'
+            description: 'This column brings the Department name description'
+
+          - name: 'DepartmentGroupName'
+            description: 'This column brings the Department Group name description'
+            

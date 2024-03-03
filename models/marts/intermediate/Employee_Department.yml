@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: 'Employee_Department'
+    description: 'This table brings the departament history from de employee'
+    schema: sap_adw
+    tables:
+      - name: 'Employee_Department'
+        description: 'This table bring the general information from Adventure Works departments'
+        columns:
+          - name: 'Pk_BusinessPerson'
+            description: 'This column is the Primery Key of this table, and comes from de column BusinessPersonId'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'BusinessPersonId'
+            description: 'This columns brings the Pk from this table'
+
+          - name: 'DepartmentEmployeeId'
+            description: 'This columns brings the departament employee Id'
+            

@@ -6,7 +6,7 @@ sources:
     description: 'The source is from the Adventure Works repository'
     tables:
       - name: 'department'
-        description: "This table bring the general information from Adventure Works departments."
+        description: 'This table bring the general information from Adventure Works departments'
         columns:
           - name: 'departmentid'
             description: 'This column brings the Pk of this table'

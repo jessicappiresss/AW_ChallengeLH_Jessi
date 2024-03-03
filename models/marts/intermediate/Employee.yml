@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: 'Employee'
+    description: 'This table brings the departament history from de employee'
+    schema: sap_adw
+    tables:
+      - name: 'Employee'
+        description: 'This table brings general information from the employees, as departament, vacation hours, sickleave days and job title'
+        columns:
+          - name: 'Pk_EmployeeLogin'
+            description: 'This column is the Primery Key from table Department Employee, and comes from de column ProductCategoryId'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'EmployeeLoginId'
+            description: 'This column ir the Pk from this table, e is going to be the Sk for Dim_Employee'
+
+          - name: 'Fk_BusinessPerson'
+            description: 'This column is the Primery Key from table Department Employee'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'Fk_DepartmentEmployee'
+            description: 'This column is the Primery Key of this table, and comes from de column BusinessPersonId'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'BusinessPersonId'
+            description: 'This Column is one of the Pk from this table, is going to be used for join with table Department'
+
+          - name: 'JobName'
+            description: 'This column brings the description of the employee role, as Engineering Manager, Design Engineer, Sales Representative'
+
+          - name: 'EmployeeGender'
+            description: 'This column brings the employee gender'
+
+          - name: 'EmployeeHiredDate'
+            description: 'This column brings the employee hired date'
+
+          - name: 'SalariedEmployee'
+            description: 'Hiring regime: No = Hourly, not exempt from collective bargaining. Yes = Salaried person, exempt from collective bargaining'
+
+          - name: 'EmployeeVacationHours'
+            description: 'This columns brings the employee available vacation hours'
+
+          - name: 'CurrentEmployee'
+            description: 'This column brings the hired situation of the employee: No = Inactive, Yes = Aticve'
+
+          - name: 'EmployeeSickLeaveHours'
+            description: 'This columns brings the number of the employee sick leave hours'
+
+          - name: 'DepartmentEmployeeId'
+            description: 'This columns brings the departament employee Id'
+
+          - name: 'DepartamentName'
+            description: 'This column brings the Department name description'
+
+          - name: 'DepartmentGroupName'
+            description: 'This column brings the Department Group name description'
+            
