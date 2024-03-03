@@ -9,7 +9,7 @@ sources:
         description: 'This tables brings general information of the payment methode as credit card'
         columns:
           - name: 'businessentityid'
-            description: 'This column brings the Id fo the customers and is also de Primary Key of this table'
+            description: 'This column brings the Id of the customers and is also de Primary Key of this table'
             tests:
             - unique
             - not_null
@@ -20,3 +20,18 @@ sources:
             tests:
             - unique
             - not_null
+
+      - name: 'creditcard'
+        description: 'This tables brings general information of the payment methode as credit card'
+        columns:
+          - name: 'creditcardid'
+            description: 'This column brings the Id of the customers credit card and is also de Primary Key of this table'
+            tests:
+            - unique
+            - not_null
+
+          - name: 'cardtype'
+            description: 'This column brings the description of brand of the credit card'
+
+
+
