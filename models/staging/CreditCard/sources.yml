@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: 'sales'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'personcreditcard'
+        description: 'This tables brings general information of the payment methode as credit card'
+        columns:
+          - name: 'businessentityid'
+            description: 'This column brings the Id fo the customers and is also de Primary Key of this table'
+            tests:
+            - unique
+            - not_null
+
+          - name: 'creditcardid'
+            description: 'This column brings the code of the credit card Id,
+              is a Foreing Key of the table CreditCard'
+            tests:
+            - unique
+            - not_null
+            

@@ -104,4 +104,3 @@ sources:
 
           - name: 'name'
             description: 'This columns brings the description of the subcategory. Ex: Chain, Gloves, Socks'
-
