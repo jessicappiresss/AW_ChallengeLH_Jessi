@@ -1,69 +1,70 @@
 version: 2
 
 sources:
-  - name: humanresources
+  - name: 'humanresources'
     schema: sap_adw
-    description: Dados brutos extraídos do banco de dados PostgreSQL da Adventure Works.
+    description: 'The source is from the Adventure Works repository'
     tables:
-      - name: "department"
-        description: "Tabela de consulta contendo os departamentos da empresa Adventure Works Cycles."
+      - name: 'department'
+        description: "This table bring the general information from Adventure Works departments."
         columns:
-          - name: "departmentid"
-            description: "Chave primária para registros do Departamento."
+          - name: 'departmentid'
+            description: 'This column brings the Pk of this table'
             tests:
               - unique
               - not_null
 
-          - name: "name"
-            description: "Nome do Departamento."
+          - name: 'name'
+            description: 'This column brings the Department name description'
 
-          - name: "groupname"
-            description: "Nome do grupo ao qual o departamento pertence."
+          - name: 'groupname'
+            description: 'This column brings the Department Group name description'
 
-      - name: "employee"
-        description: "Tabela contendo informações dos funcionários, como salário, departamento e cargo."
+      - name: 'employee'
+        description: 'This table brings general information from the employees, as departament, vacation hours, sickleave days and job title'
         columns:
-          - name: "businessentityid"
-            description: "Chave primária para registros de funcionários. Chave estrangeira para BusinessEntity.BusinessEntityID."
+          - name: 'loginid'
+            description: 'This column ir the Pk from this table, e is going to be the Sk for Dim_Employee'
             tests:
               - unique
               - not_null
 
-          - name: "nationalidnumber"
-            description: "Número de identificação nacional exclusivo, como um número de segurança social."
-
-          - name: "loginid"
-            description: "Login na rede."
+          - name: 'businessentityid'
+            description: 'This Column is one of the Pk from this table, is going to be used for join with table Department'
             tests:
               - unique
               - not_null
 
-          - name: "jobtitle"
-            description: "Cargo do trabalho, como Comprador ou Representante de Vendas."
+          - name: 'jobtitle'
+            description: 'This column brings the description of the employee role, as Engineering Manager, Design Engineer, Sales Representative'
 
-          - name: "birthdate"
-            description: "Data de nascimento."
+          - name: 'gender'
+            description: 'This column brings the employee gender'
 
-          - name: "maritalstatus"
-            description: "Estado Civil."
+          - name: 'hiredate'
+            description: 'This column brings the employee hired date'
 
-          - name: "gender"
-            description: "Gênero."
+          - name: 'salariedflag'
+            description: 'Hiring regime: No = Hourly, not exempt from collective bargaining. Yes = Salaried person, exempt from collective bargaining'
 
-          - name: "hiredate"
-            description: "Data de contratação do funcionário."
+          - name: 'vacationhours'
+            description: 'This columns brings the employee available vacation hours'
 
-          - name: "salariedflag"
-            description: "Regime de contratação: 0 = Por hora, não isento de negociação coletiva. 1 = Assalariado, isento de negociação coletiva."
+          - name: 'currentflag'
+            description: 'This column brings the hired situation of the employee: No = Inactive, Yes = Aticve'
 
-          - name: "vacationhours"
-            description: "Número de horas de férias disponíveis."
+          - name: 'sickleavehours'
+            description: 'This columns brings the number of the employee sick leave hours'
 
-          - name: "currentflag"
-            description: "Status do funcionário: 0 = Inativo, 1 = Ativo"
+      - name: 'employeedepartmenthistory'
+        description: 'This table brings the departament history from de employee'
+        columns:
+          - name: 'businessentityid'
+            description: 'This is the Pk from this table as column BusinessPersonId 
+              It is going to be important for the join with the department table, this way, is going to be possible identifier the Employee Id with his department'
+            tests:
+              - unique
+              - not_null
 
-          - name: "sickleavehours"
-            description: "Número de horas de licença médica disponíveis."
-            
-          - name: "organizationnode"
-            description: "Localização do funcionário na hierarquia corporativa."
+          - name: 'departmentid'
+            description: 'This column is one of the Pk from this table, e is going to be used for the join with department table.'
