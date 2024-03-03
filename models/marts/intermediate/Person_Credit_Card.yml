@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: 'Person_Credit_Card'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'PersonCreditCard'
+        description: 'This table brings the Pk of the business person Id profile from credit card use'
+        columns:
+          - name: 'Pk_BusinessPerson'
+            description: 'This column is the Primery Key of this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'CreditCardId'
+            description: 'This column brings the code of the credit card Id,
+              is a Foreing Key of the table CreditCard'
