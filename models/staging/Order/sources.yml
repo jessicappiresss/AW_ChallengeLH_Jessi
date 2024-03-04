@@ -1,0 +1,237 @@
+version: 2
+
+sources:
+  - name: 'sales'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'salesperson'
+        description: 'Table containing current sales representative information'
+        columns:
+          - name: "businessentityid"
+            description: 'Primary key for SalesPerson records'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'territoryid'
+            description: 'Currently assigned territory. Foreign key to SalesTerritory.SalesTerritoryID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'salesquota'
+            description: 'Projected annual sales'
+
+          - name: 'bonus'
+            description: 'Bonus due if quota is reached'
+
+          - name: 'salesytd'
+            description: 'Total sales year to date'
+
+          - name: 'saleslastyear'
+            description: 'Total sales from the previous year'
+
+      - name: 'salesterritory'
+        description: 'Sales territory lookup table'
+        columns:
+          - name: 'territoryid'
+            description: 'Primary key for SalesTerritory records'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'name'
+            description: 'Description of the sales territory'
+
+          - name: 'countryregioncode'
+            description: 'Standard country or region code. Foreign key to CountryRegion.CountryRegionCode'
+
+          - name: 'group'
+            description: 'Geographic area to which the sales territory belongs'
+
+          - name: 'salesytd'
+            description: 'Sales in the territory in the year to date'
+
+          - name: "saleslastyear"
+            description: "Vendas no território no ano anterior."
+
+          - name: 'costytd'
+            description: 'Commercial costs in the territory in the year to date'
+
+          - name: 'costlastyear'
+            description: 'Commercial costs in the territory in the previous year'
+
+      - name: 'store'
+        description: 'Table containing information on customers (resellers) of Adventure Works products'
+        columns:
+          - name: 'businessentityid'
+            description: 'Primary key. Foreign key to Customer.BusinessEntityID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'name'
+            description: 'Store name'
+
+          - name: 'salespersonid'
+            description: 'Seller ID assigned to the customer. Foreign key to SalesPerson.BusinessEntityID'
+            tests:
+              - unique
+              - not_null
+
+      - name: 'salesorderdetail'
+        description: 'Individual products associated with a specific sales order. See SalesOrderHeader'
+        columns:
+          - name: 'salesorderid'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'salesorderdetailid'
+            description: 'Primary key. A unique incremental number per product sold'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'orderqty'
+            description: 'Quantity ordered per product'
+
+          - name: 'productid'
+            description: 'Product sold to the customer. Foreign key to Product.ProductID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'specialofferid'
+            description: 'Promotional code. Foreign key to SpecialOffer.SpecialOfferID'
+
+          - name: 'unitprice'
+            description: 'Sales price of a single product'
+
+          - name: 'unitpricediscount'
+            description: 'Discount amount'
+
+      - name: 'customer'
+        description: 'Table containing current customer information. See also the Person and Store tables'
+        columns:
+          - name: 'customerid'
+            description: 'Primary Key'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'personid'
+            description: 'Foreign key to Person'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'storeid'
+            description: 'Foreign key to Store'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'territoryid'
+            description: 'Id of the territory where the customer is located. Foreign key to SalesTerritory.SalesTerritoryID'
+            tests:
+              - unique
+              - not_null
+
+      - name: 'salesorderheader'
+        description: 'Table containing general information about sales orders. Discount amount.'
+        columns:
+          - name: 'salesorderid'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'territoryid'
+            description: 'Territory in which the sale was carried out. Foreign key to SalesTerritory.SalesTerritoryID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'creditcardid'
+            description: "Credit card identification number. Foreign key to CreditCard.CreditCardID."
+            tests:
+              - unique
+              - not_null
+
+          - name: 'customerid'
+            description: "Customer identification number. Foreign key to Customer.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: 'salespersonid'
+            description: "Salesperson who created the sales order. Foreign key to SalesPerson.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: 'shiptoaddressid'
+            description: 'Customer delivery address. Foreign key to Address.AddressID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'shipmethodid'
+            description: 'Shipping method. Foreign key to ShipMethod.ShipMethodID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'orderdate'
+            description: 'Dates the sales order was created'
+
+          - name: 'duedate'
+            description: 'Date the order is due to the customer'
+
+          - name: 'shipdate'
+            description: 'Date the order was sent to the customer'
+
+          - name: 'status'
+            description: 'Current order status. 1 = In process; 2 = Approved; 3 = Order on hold; 4 = Rejected; 5 = Sent; 6 = Canceled'
+
+          - name: 'onlineorderflag'
+            description: 'Order type: 0 = Order placed by the seller. 1 = Order placed online by the customer.'
+
+          - name: 'billtoadressid'
+            description: 'Sales subtotal. Calculated as SUM(SalesOrderDetail.LineTotal) for the appropriate SalesOrderID.'
+
+          - name: 'subtotal'
+            description: 'Sales subtotal. Calculated as SUM(SalesOrderDetail.LineTotal) for the appropriate SalesOrderID.'
+
+          - name: 'totaldue'
+            description: 'Total owed by the customer. Calculated as Subtotal + TaxAmt + Shipping'
+
+      - name: 'salesorderheadersalesreason'
+        description: 'Cross-reference table that maps sales orders to sales reason codes'
+        columns:
+          - name: 'salesorderid'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'salesreasonid'
+            description: 'Reason Id'
+
+      - name: 'salesreason'
+        description: 'Query table of customer purchasing reasons'
+        columns:
+          - name: 'salesreasonid'
+            description: 'Primary key. Foreign key to SalesReason.SalesReasonID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'name'
+            description: 'Description of reason for sale'
+
+          - name: 'reasontype'
+            description: 'Category to which the reason for sale belongs'
