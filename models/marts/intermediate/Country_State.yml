@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: 'Country_StatePerson'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Country_State'
+        description: 'This table brings the stateprovinceid , and it is the principal table for join with int_Person
+          This column brings the abbreviation of the Country Region name. ex: US, FR'
+        columns:
+          - name: 'Fk_StateProvince'
+            description: 'This column is the Pk from this table, transformed'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'StateProvinceId'
+            description: 'transformed name in this table'
+
+          - name: 'StateProvinceAbbreviation'
+            description: 'This column brings the abbreviation of the Region name. ex: Arizona, AZ'
+
+          - name: 'CountryRegionCode'
+            description: 'This column brings the abbreviation of the Country Region name. ex: US, FR'
+
+          - name: 'RegionName'
+            description: 'This column brings the Region name. ex: Arizona'
+
+          - name: 'TerritoryId'
+            description: 'This column brings the Id of the region'
+          
+          - name: 'Fk_CountryRegion'
+            description: 'This column is one of the Pk from this table'
+
+          - name: 'CountryRegionCode'
+            description: 'This column brings the abbreviation of the Country Region name'
+
+          - name: 'CountryName'
+            description: 'This column brings the name of the Country'

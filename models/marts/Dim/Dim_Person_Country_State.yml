@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: 'Dim_Person_Country_State'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Dim_Person_Country_State'
+        description: 'This table brings the Pk of the Person, and it is the principal table from this dim'
+        columns:
+          - name: 'Sk_BusinessPerson'
+            description: 'This column is the Pk from this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'Pk_BusinessPerson'
+            description: 'This column is the Pk from this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'Fk_EmailAddress'
+            description: 'This column is the Fk from the table Email Address'
+
+          - name: 'Fk_BusinessAddress'
+            description: 'This column is the Fk from the table Business Address'
+
+          - name: 'Fk_PrincipalAddress'
+            description: 'Fk of the table Address'
+
+          - name: 'Fk_StateProvince'
+            description: 'This column is the Fk from this table'
+
+          - name: 'Fk_CountryRegion'
+            description: 'This column is one of the Fk from this table'
+
+          - name: 'BusinessPersonId'
+            description: 'This columnm is one of the Pk from this table, is important to the final join of the Dim_Person_Customer'
+
+          - name: 'PersonType'
+            description: 'transformed name in this table'
+
+          - name: 'PersonTypeDescription'
+            description: 'transformed name in this table'
+
+          - name: 'ModelTypeName'
+            description: 'transformed name in this table'
+
+          - name: 'TitleName'
+            description: 'transformed name in this table'
+
+          - name: 'CompleteName'
+            description: 'transformed name in this table'
+
+          - name: 'EmailAddressId'
+            description: 'This column is the Pk of this table, as Pk_EmailAddress. Transformed name'
+
+          - name: 'EmailAddress'
+            description: 'This column brings the email addres description.Transformed name'
+
+          - name: 'AddressId'
+            description: 'This column is the Pk from this table, from addressid'
+
+          - name: 'AddressTypeId'
+            description: 'This column is one of the Pk from this table'
+
+          - name: 'AddressRoadName'
+            description: 'This column is brings the road name of the address'
+          
+          - name: 'AddressCityName'
+            description: 'This column brings the name of the address city'
+
+          - name: 'StateProvinceId'
+            description: 'This column is one of the Pk from this table, is going to be used for final join'
+
+          - name: 'PostalCode'
+            description: 'This column brings the postal code description'
+
+          - name: 'StateProvinceAbbreviation'
+            description: 'This column brings the abbreviation of the Region name. ex: Arizona, AZ'
+
+          - name: 'CountryRegionCode'
+            description: 'This column brings the abbreviation of the Country Region name. ex: US, FR'
+
+          - name: 'RegionName'
+            description: 'This column brings the Region name. ex: Arizona'
+
+          - name: 'TerritoryId'
+            description: 'This column brings the Id of the region'
+          
+          - name: 'CountryRegionCode'
+            description: 'This column brings the abbreviation of the Country Region name'
+
+          - name: 'CountryName'
+            description: 'This column brings the name of the Country'

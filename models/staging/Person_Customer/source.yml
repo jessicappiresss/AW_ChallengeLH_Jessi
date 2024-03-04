@@ -6,100 +6,272 @@ sources:
     schema: sap_adw
     tables:
       - name: 'contacttype'
-        description: 'This tables brings general information of the customers/persons type of contact'
+        description: 'This tables brings information of the persons type of contact as role description'
         columns:
-          - name: ''
-            description: ''
+          - name: 'contacttypeid'
+            description: 'This column is the Primary Key from this table'
             tests:
             - unique
             - not_null
 
-          - name: ''
-            description: ''
-            tests:
-            - unique
-            - not_null
+          - name: 'name'
+            description: 'This column brings the description of the contact type. ex: Accounting Manager, Owner, Sales Representative'
 
-          - name: ''
-            description: '' 
+          - name: 'Pk_ContactType'
+            description: 'This column is the creation of the hash for the Pk of the column' 
             tests:
               - unique
               - not_null
 
-          - name: ''
-            description: ''
+          - name: 'ContactTypeId'
+            description: 'This column is the Primary Key from this table with tranformed name'
 
-          - name: ''
-            description: ''
+          - name: 'ContactTypeName'
+            description: 'This column brings the description of the contact type with transformed name.
+              ex: Accounting Manager, Owner, Sales Representative'
 
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-          - name: ''
-            description: ''
-
-      - name: 'new table'
-        description: ''
+      - name: 'businessentitycontact'
+        description: 'This table brings information of codes from the columns bellow'
         columns:
-          - name: ''
-            description: ''
+          - name: 'businessentityid'
+            description: 'This column is one of the Pk from this table'
             tests:
               - unique
               - not_null
 
-          - name: ''
-            description: ''
+          - name: 'personid'
+            description: 'This column is the Pk from this table, Pk_PersonContact'
 
-      - name: 'new table'
-        description: ''
+          - name: 'contacttypeid'
+            description: 'This column brings the contact type Id and is a Fk from table Contact Type'
+
+          - name: 'Pk_PersonContact'
+            description: 'This column is the Pk from this table, Pk_PersonContact camos from PersonContactId'
+
+          - name: 'PersonContactId'
+            description: 'This column is the Pk from this table, Pk_PersonContact'
+
+          - name: 'BusinessPersonId'
+            description: 'This columnm is one of the Pk from this table, is important to the final join of the Dim_Person_Customer'
+
+          - name: 'ContactTypeId'
+            description: 'This column brings the contact type Id and is a Fk from table Contact Type'
+
+      - name: 'emailaddress'
+        description: 'This table brings the general information of the email address'
         columns:
-          - name: ''
-            description: ''
+          - name: 'businessentityid'
+            description: 'This column is one of the Pk from this table, e is going to be udes for koin with oder tables'
             tests:
               - unique
               - not_null
 
-          - name: ''
-            description: ''
+          - name: 'emailaddressid'
+            description: 'This column is the Pk of this table, as Pk_EmailAddress'
             tests:
               - unique
               - not_null
 
-          - name: ''
-            description: ''
+          - name: 'emailaddress'
+            description: 'This column brings the email addres description'
+
+          - name: 'Pk_EmailAddress'
+            description: 'This column is the Pk from this table'
+          
+          - name: 'EmailAddressId'
+            description: 'This column is the Pk of this table, as Pk_EmailAddress. Transformed name'
+
+          - name: 'BusinessPersonId'
+            description: 'This column is one of the Pk from this table, e is going to be udes for koin with oder tables,Tranformed name'
+
+          - name: 'EmailAddress'
+            description: 'This column brings the email addres description.Transformed name'
+
+      - name: 'businessentityaddress'
+        description: 'This table brings information of codes from the columns bellow'
+        columns:
+          - name: 'businessentityid'
+            description: 'This column is one of the Pk from this table, e is going to be udes for koin with oder tables'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'addressid'
+            description: 'This column is the Pk from this table'
+          
+          - name: 'addresstypeid'
+            description: 'This column is one of the Pk from this table'
+
+          - name: 'Pk_Address'
+            description: 'This column is the Pk from this table, from addressid'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'AddressId'
+            description: 'This column is the Pk from this table, from addressid'
+
+          - name: 'BusinessPersonId'
+            description: 'This column is one of the Pk from this table, e is going to be udes for koin with other tables.Tranformed name'
+
+          - name: 'AddressTypeId'
+            description: 'This column is one of the Pk from this table'
+
+      - name: 'address'
+        description: 'This table brings information of persons and customers address'
+        columns:
+          - name: 'addressid'
+            description: 'This column is one of the Pk from this table, e is going to be use as Pk from this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'addressline1'
+            description: 'This column is brings the road name of the address'
+          
+          - name: 'city'
+            description: 'This column brings the name of the address city'
+
+          - name: 'stateprovinceid'
+            description: 'This column is one of the Pk from this table, is going to be used for join with other table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'postalcode'
+            description: 'This column brings the postal code description'
+
+          - name: 'Pk_PrincipalAddress'
+            description: 'Pk of this table, transformed name'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'AddressId'
+            description: 'Pk of this table'
+
+          - name: 'AddressRoadName'
+            description: 'This column is brings the road name of the address'
+          
+          - name: 'AddressCityName'
+            description: 'This column brings the name of the address city'
+
+          - name: 'StateProvinceId'
+            description: 'This column is one of the Pk from this table, is going to be used for join with other table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'PostalCode'
+            description: 'This column brings the postal code description'
+
+      - name: 'person'
+        description: 'This table brings information of persons and customers address'
+        columns:
+          - name: 'businessentityid'
+            description: 'This column is one of the Pk from this table, e is going to be use as Pk from this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'persontype'
+            description: 'This column brings the description of the relation of the person with the business'
+          
+          - name: 'namestyle'
+            description: 'This column brings the description of the writing of the person name'
+
+          - name: 'title'
+            description: 'This column brings the courtesy title of the person'
+
+          - name: 'firstname'
+            description: 'This column brings the person first name'
+
+          - name: 'middlename'
+            description: 'This column brings the person middle name'
+
+          - name: 'lastname'
+            description: 'This column brings the person last name'
+
+          - name: 'Pk_BusinessPerson'
+            description: 'This column is the Pk from this table, transformed'
+          
+          - name: 'BusinessPersonId'
+            description: 'transformed name in this table'
+
+          - name: 'PersonType'
+            description: 'transformed name in this table'
+
+          - name: 'PersonTypeDescription'
+            description: 'transformed name in this table'
+
+          - name: 'ModelTypeName'
+            description: 'transformed name in this table'
+
+          - name: 'TitleName'
+            description: 'transformed name in this table'
+
+          - name: 'CompleteName'
+            description: 'transformed name in this table'
+
+      - name: 'stateprovince'
+        description: 'This table brings information of state province'
+        columns:
+          - name: 'stateprovinceid'
+            description: 'This column is one of the Pk from this table, e is going to be use as Pk from this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'stateprovincecode'
+            description: 'This column brings the abbreviation of the Region name. ex: Arizona, AZ'
+          
+          - name: 'countryregioncode'
+            description: 'This column brings the abbreviation of the Country Region name. ex: US, FR'
+
+          - name: 'name'
+            description: 'This column brings the Region name. ex: Arizona'
+
+          - name: 'territoryid'
+            description: 'This column brings the Id of the region'
+
+          - name: 'Pk_StateProvince'
+            description: 'This column is the Pk from this table, transformed'
+          
+          - name: 'StateProvinceId'
+            description: 'transformed name in this table'
+
+          - name: 'StateProvinceAbbreviation'
+            description: 'transformed name in this table'
+
+          - name: 'CountryRegionCode'
+            description: 'transformed name in this table'
+
+          - name: 'RegionName'
+            description: 'transformed name in this table'
+
+          - name: 'TerritoryId'
+            description: 'transformed name in this table'
+
+      - name: 'countryregion'
+        description: 'This table brings information of country'
+        columns:
+          - name: 'countryregioncode'
+            description: 'This column is one of the Pk from this table, e is going to be use as Pk from this table
+              This column brings the abbreviation of the Country Region name. ex: US, FR'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'name'
+            description: 'This column brings the name of the Country.'
+          
+          - name: 'Pk_CountryRegion'
+            description: 'This column is one of the Pk from this table'
+
+          - name: 'CountryRegionCode'
+            description: 'This column brings the abbreviation of the Country Region name'
+
+          - name: 'CountryName'
+            description: 'This column brings the name of the Country'
+
+
