@@ -1,7 +1,7 @@
 with
     SalesOrderReasonStaging as (
         select
-            cast(salesreasonid as int) as SalesReasonId
+            cast(salesorderid as int) as SalesOrderId
             , cast(salesreasonid  as int) as SalesReasonId
         from {{ source('sales', 'salesorderheadersalesreason') }}
     )

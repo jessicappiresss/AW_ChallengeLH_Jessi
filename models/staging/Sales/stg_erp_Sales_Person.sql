@@ -5,8 +5,8 @@ with
             , cast(territoryid as int) as TerritoryId
             , cast(salesquota as int) as ProjectionAnnualSales
             , cast(bonus as int) as BonusWhenGoalAchieved
-            , cast(salesytd as float) as TotalSalesYear
-            , cast(saleslastyear as float) as TotalSalesPreviousYear
+            , cast(salesytd as float64) as TotalSalesYear
+            , cast(saleslastyear as float64) as TotalSalesPreviousYear
         from {{ source('sales', 'salesperson') }}
     )
 

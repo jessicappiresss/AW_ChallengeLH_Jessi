@@ -3,7 +3,7 @@ with
         select
             cast(salesreasonid as int) as SalesReasonId
             , cast(name as string) as ReasonGivenName
-            , cast(reasontype  as int) as ReasonType
+            , cast(reasontype  as string) as ReasonType
         from {{ source('sales', 'salesreason') }}
     )
 

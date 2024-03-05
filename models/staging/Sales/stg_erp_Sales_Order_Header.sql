@@ -28,8 +28,8 @@ with
                 when onlineorderflag = false then 'Order placed online by the customer'
                 else 'Unknown'
             end as OnlineOrderType
-            , cast(subtotal as float) as OrderSubtotalValue
-            , cast(totaldue as float) as OrderTotalValue
+            , cast(subtotal as float64) as OrderSubtotalValue
+            , cast(totaldue as float64) as OrderTotalValue
         from {{ source('sales', 'salesorderheader') }}
     )
 
