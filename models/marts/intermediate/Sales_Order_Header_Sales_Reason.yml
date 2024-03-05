@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: 'Sales_Order_Header_Sales_Reason'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Sales_Order_Header_Sales_Reason'
+        description: 'Cross-reference table that maps sales orders to sales reason codes'
+        columns:
+          - name: 'Pk_SalesOrder'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'SalesReasonId'
+            description: 'Reason Id'
+
+          - name: 'SalesOrderId'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID.'

@@ -9,6 +9,7 @@ with
             Pk_Product
             , Fk_Productsubcategory
             , Fk_ProductCategory
+            , ProductId
             , ProductName
             , ProductCategoryName
             , ProductSubCategoryName

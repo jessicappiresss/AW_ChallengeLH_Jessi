@@ -26,7 +26,7 @@ with
             , CommercialCostsTerritoryPreviousYear
             , CreditCardId
             , CustomerId
-            , Salespersonid
+            , SalesPersonId
             , ShipToAddressId
             , ShipMethodId
             , BillToAddressId
@@ -38,7 +38,7 @@ with
             , OrderSubtotalValue
             , OrderTotalValue
             , PersonId
-            , StoreId
+            , Storeid
             , BusinessPersonid
             , ProjectionAnnualSales
             , BonusWhenGoalAchieved

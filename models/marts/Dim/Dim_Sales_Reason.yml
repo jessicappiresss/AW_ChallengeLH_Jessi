@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: 'Dim_Sales_Reason'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Dim_Sales_Reason'
+        description: 'Query table of customer purchasing reasons'
+        columns:
+          - name: 'Sk_SalesReason'
+            description: 'Primary key. Foreign key to SalesReason.SalesReasonID.'
+
+          - name: 'Pk SalesReason'
+            description: 'Primary key. Foreign key to SalesReason.SalesReasonID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'Fk_SalesOrder'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'SalesReasonId'
+            description: 'Primary key. Foreign key to SalesReason.SalesReasonID.'
+
+          - name: 'SalesOrderId'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID.'
+
+          - name: 'ReasonGivenName'
+            description: 'Description of reason for sale'
+
+          - name: 'ReasonType'
+            description: 'Category to which the reason for sale belongs'

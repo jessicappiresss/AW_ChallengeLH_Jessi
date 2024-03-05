@@ -56,10 +56,10 @@ with
         select
             Customer.Pk_Customer as Fk_Customer
             , Customer.PersonId
-            , Customer.StoreId
+            , Customer.Storeid
             , FirstJoinSOD.*
         from FirstJoinSOD
-        left join Customer
+        inner join Customer
             on FirstJoinSOD.CustomerId = Customer.CustomerId
     )
 

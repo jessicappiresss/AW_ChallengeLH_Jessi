@@ -14,6 +14,9 @@ models:
               - unique
               - not_null
 
+          - name: 'ProductId'
+            description: 'This column is the Primery Key of this table, and comes from de column stg_erp_Product'
+
           - name: 'Fk_Productsubcategory'
             description: 'This column brings de Product Subcategory Pk, as the Forein Key of the table Product_Subcategory,
               in this table is not aplicated the tests because, more the one product can have the same subcategory'
