@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: 'Customer'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Customer'
+        description: 'Table containing current customer information. See also the Person and Store tables'
+        columns:
+          - name: 'Pk_Customer'
+            description: 'Primary Key'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'CustomerId'
+            description: 'Foreign key to Person'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'PersonId'
+            description: 'Foreign key to Person'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'StoreId'
+            description: 'Foreign key to Store'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'TerritoryId'
+            description: 'Id of the territory where the customer is located. Foreign key to SalesTerritory.SalesTerritoryID'
+            tests:
+              - unique
+              - not_null

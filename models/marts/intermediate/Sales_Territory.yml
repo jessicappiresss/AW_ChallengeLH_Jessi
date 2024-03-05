@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: 'Sales_Territory'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'salesterritory'
+        description: 'Sales territory lookup table'
+        columns:
+          - name: 'Pk_territory'
+            description: 'Primary key for SalesTerritory records'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'TerritoryID'
+            description: 'Primary key for SalesTerritory records'
+
+          - name: 'TerritoryName'
+            description: 'Description of the sales territory'
+
+          - name: 'CountryRegionCode'
+            description: 'Standard country or region code. Foreign key to CountryRegion.CountryRegionCode'
+
+          - name: 'SalesTerritoryAccumulatedYear'
+            description: 'Sales in the territory in the year to date'
+
+          - name: "TotalSalesYear"
+            description: "Vendas no território no ano anterior."
+
+          - name: 'CommercialCostsTerritoryYear'
+            description: 'Commercial costs in the territory in the year to date'
+
+          - name: 'CommercialCostsTerritoryPreviousYear'
+            description: 'Commercial costs in the territory in the previous year'

@@ -1,11 +1,11 @@
 with
     SalesPersonStaging as (
         select
-            cast(businessentityid as int) as BusinessPersonid
+            cast(businessentityid as int) as BusinessPersonId
             , cast(territoryid as int) as TerritoryId
             , cast(salesquota as int) as ProjectionAnnualSales
             , cast(bonus as int) as BonusWhenGoalAchieved
-            , cast(salesytd as float64) as TotalSalesYear
+            , cast(salesytd as float64) as TotalPersonSalesYear
             , cast(saleslastyear as float64) as TotalSalesPreviousYear
         from {{ source('sales', 'salesperson') }}
     )

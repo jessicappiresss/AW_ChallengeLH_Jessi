@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: 'Store'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'store'
+        description: 'Table containing information on customers (resellers) of Adventure Works products'
+        columns:
+          - name: 'Pk_BusinessPerson'
+            description: 'Primary key. Foreign key to Customer.BusinessEntityID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'BusinessPersonId'
+            description: 'Primary key. Foreign key to Customer.BusinessEntityID'
+
+          - name: 'StoreName'
+            description: 'Store name'
+
+          - name: 'SalesPersonId'
+            description: 'Seller ID assigned to the customer. Foreign key to SalesPerson.BusinessEntityID'
+            tests:
+              - unique
+              - not_null

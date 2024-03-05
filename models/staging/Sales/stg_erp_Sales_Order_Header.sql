@@ -2,11 +2,11 @@ with
     SalesOrderHeaderStaging as (
         select
             cast(salesorderid as int) as SalesOrderId
-            , cast(territoryid as int) as territoryid
+            , cast(territoryid as int) as territoryId
             , cast(creditcardid as int) as CreditCardId
             , cast(customerid as int) as CustomerId
             , cast(salespersonid as int) as SalesPersonId
-            , cast(shiptoaddressid as int) as ShiptoAddressId
+            , cast(shiptoaddressid as int) as ShipToAddressId
             , cast(shipmethodid as int) as ShipMethodId
             , cast(billtoaddressid as int) as BilltoAddressId
             , cast(orderdate as timestamp) as OrderDate

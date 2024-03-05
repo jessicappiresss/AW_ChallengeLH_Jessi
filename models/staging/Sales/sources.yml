@@ -200,7 +200,7 @@ sources:
           - name: 'onlineorderflag'
             description: 'Order type: 0 = Order placed by the seller. 1 = Order placed online by the customer.'
 
-          - name: 'billtoadressid'
+          - name: 'billtoaddressid'
             description: 'Sales subtotal. Calculated as SUM(SalesOrderDetail.LineTotal) for the appropriate SalesOrderID.'
 
           - name: 'subtotal'

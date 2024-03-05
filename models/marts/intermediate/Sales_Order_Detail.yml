@@ -1,0 +1,159 @@
+version: 2
+
+models:
+  - name: 'Sales_Order_Detail'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'Sales_Order_Detail'
+        description: 'Individual products associated with a specific sales order. See SalesOrderHeader'
+        columns:
+          - name: 'Pk_SalesOrderDetail'
+            description: 'Primary key from this table'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'Fk_SalesOrder'
+            description: 'Fk from SalesOrderHeader'
+
+          - name: 'Fk_Customer'
+            description: 'Fk from Customer table'
+
+          - name: 'Fk_Territory'
+            description: 'Fk from SalesTerritory table'
+
+          - name: 'Fk_BusinessPerson'
+            description: 'Fk from SalesPerson table'
+
+          - name: 'SalesOrderDetailId'
+            description: 'Primary key. A unique incremental number per product sold'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'SalesOrderID'
+            description: 'Primary key. Foreign key to SalesOrderHeader.SalesOrderID'
+
+          - name: 'OrderProductQuantity'
+            description: 'Quantity ordered per product'
+
+          - name: 'ProductID'
+            description: 'Product sold to the customer. Foreign key to Product.ProductID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'SpecialOfferId'
+            description: 'Promotional code. Foreign key to SpecialOffer.SpecialOfferID'
+
+          - name: 'ProductUnitPrice'
+            description: 'Sales price of a single product'
+
+          - name: 'ProductUnitPriceDiscount'
+            description: 'Discount amount'
+
+          - name: 'TerritoryID'
+            description: 'Territory in which the sale was carried out. Foreign key to SalesTerritory.SalesTerritoryID.'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'CreditCardID'
+            description: "Credit card identification number. Foreign key to CreditCard.CreditCardID."
+            tests:
+              - unique
+              - not_null
+
+          - name: 'CustomerID'
+            description: "Customer identification number. Foreign key to Customer.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: 'SalesPersonId'
+            description: "Salesperson who created the sales order. Foreign key to SalesPerson.BusinessEntityID."
+            tests:
+              - unique
+              - not_null
+
+          - name: 'ShipToAddressId'
+            description: 'Customer delivery address. Foreign key to Address.AddressID.'
+
+          - name: 'ShipMethodId'
+            description: 'Shipping method. Foreign key to ShipMethod.ShipMethodID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'OrderDate'
+            description: 'Dates the sales order was created'
+
+          - name: 'DueDate'
+            description: 'Date the order is due to the customer'
+
+          - name: 'ShipDate'
+            description: 'Date the order was sent to the customer'
+
+          - name: 'OrderStatus'
+            description: 'Current order status. 1 = In process; 2 = Approved; 3 = Order on hold; 4 = Rejected; 5 = Sent; 6 = Canceled'
+
+          - name: 'OnlineOrderType'
+            description: 'Order type: 0 = Order placed by the seller. 1 = Order placed online by the customer.'
+
+          - name: 'BillToAddressId'
+            description: 'Sales subtotal. Calculated as SUM(SalesOrderDetail.LineTotal) for the appropriate SalesOrderID.'
+
+          - name: 'OrderSubtotalValue'
+            description: 'Sales subtotal. Calculated as SUM(SalesOrderDetail.LineTotal) for the appropriate SalesOrderID.'
+
+          - name: 'OrderTotalValue'
+            description: 'Total owed by the customer. Calculated as Subtotal + TaxAmt + Shipping'
+
+          - name: 'PersonId'
+            description: 'Foreign key to Person'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'Storeid'
+            description: 'Foreign key to Store'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'TerritoryName'
+            description: 'Description of the sales territory'
+
+          - name: 'CountryRegionCode'
+            description: 'Standard country or region code. Foreign key to CountryRegion.CountryRegionCode'
+
+          - name: 'SalesTerritoryAccumulatedYear'
+            description: 'Sales in the territory in the year to date'
+
+          - name: "TotalSalesYear"
+            description: "Vendas no território no ano anterior."
+
+          - name: 'CommercialCostsTerritoryYear'
+            description: 'Commercial costs in the territory in the year to date'
+
+          - name: 'CommercialCostsTerritoryPreviousYear'
+            description: 'Commercial costs in the territory in the previous year'
+
+          - name: "BusinessPersonid"
+            description: 'Primary key for SalesPerson records'
+
+          - name: 'ProjectionAnnualSales'
+            description: 'Projected annual sales'
+
+          - name: 'BonusWhenGoalAchieved'
+            description: 'Bonus due if quota is reached'
+
+          - name: 'TotalPersonSalesYear'
+            description: 'Total sales year to date'
+
+          - name: 'TotalSalesPreviousYear'
+            description: 'Total sales from the previous year'
+
+          - name: 'StoreName'
+            description: 'Store name'

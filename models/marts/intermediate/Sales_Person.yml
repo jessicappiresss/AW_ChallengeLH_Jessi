@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: 'Sales_Person'
+    description: 'The source is from the Adventure Works repository'
+    schema: sap_adw
+    tables:
+      - name: 'salesperson'
+        description: 'Table containing current sales representative information'
+        columns:
+          - name: "Pk_BusinessPerson"
+            description: 'Primary key for SalesPerson records'
+            tests:
+              - unique
+              - not_null
+
+          - name: "BusinessPersonid"
+            description: 'Primary key for SalesPerson records'
+
+          - name: 'TerritoryId'
+            description: 'Currently assigned territory. Foreign key to SalesTerritory.SalesTerritoryID'
+            tests:
+              - unique
+              - not_null
+
+          - name: 'ProjectionAnnualSales'
+            description: 'Projected annual sales'
+
+          - name: 'BonusWhenGoalAchieved'
+            description: 'Bonus due if quota is reached'
+
+          - name: 'TotalPersonSalesYear'
+            description: 'Total sales year to date'
+
+          - name: 'TotalSalesPreviousYear'
+            description: 'Total sales from the previous year'
