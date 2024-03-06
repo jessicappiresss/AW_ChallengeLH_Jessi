@@ -9,9 +9,14 @@ with
         from {{ ref('stg_erp_Country_Region') }}
     )
 
+    , AddressTable as (
+        select *
+        from {{ ref('stg_erp_Address') }}
+    )
+
     , FirstJoinTable as (
         select
-            StateProvinceTable.Pk_StateProvince as Fk_StateProvince
+            StateProvinceTable.Pk_Territory
             , CountryRegionTable.Pk_CountryRegion as Fk_CountryRegion
             , StateProvinceTable.StateProvinceId
             , StateProvinceTable.StateProvinceAbbreviation
@@ -24,9 +29,21 @@ with
             on StateProvinceTable.CountryRegionCode = CountryRegionTable.CountryRegionCode
     )
 
+    , SecondJoinTable as (
+        select
+            AddressTable.Pk_PrincipalAddress as Fk_PrincipalAddress
+            , AddressTable.AddressRoadName
+            , AddressTable.AddressCityName
+            , AddressTable.PostalCode
+            , FirstJoinTable.*
+        from FirstJoinTable
+        inner join AddressTable
+            on FirstJoinTable.StateProvinceId = AddressTable.StateProvinceId
+    )
+
     , NewCountryStateTable as (
         select *
-        from FirstJoinTable
+        from SecondJoinTable
     )
 
 select *

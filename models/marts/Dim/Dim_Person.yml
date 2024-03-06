@@ -1,13 +1,19 @@
 version: 2
 
 models:
-  - name: 'Person'
+  - name: 'Dim_Person'
     description: 'The source is from the Adventure Works repository'
     schema: sap_adw
     tables:
-      - name: 'Person'
-        description: 'This table brings the Pk of the Person, and it is the principal table from Person_Customer stg'
+      - name: 'Dim_Person'
+        description: 'This table brings the Pk of the Person, and it is the principal table from this dim'
         columns:
+          - name: 'Sk_BusinessPerson'
+            description: 'This column is the Pk from this table'
+            tests:
+              - unique
+              - not_null
+
           - name: 'Pk_BusinessPerson'
             description: 'This column is the Pk from this table'
             tests:
@@ -16,9 +22,6 @@ models:
 
           - name: 'Fk_EmailAddress'
             description: 'This column is the Fk from the table Email Address'
-
-          - name: 'Fk_BusinessAddress'
-            description: 'This column is the Fk from the table Business Address'
 
           - name: 'BusinessPersonId'
             description: 'This columnm is one of the Pk from this table, is important to the final join of the Dim_Person_Customer'
@@ -43,4 +46,3 @@ models:
 
           - name: 'EmailAddress'
             description: 'This column brings the email addres description.Transformed name'
-

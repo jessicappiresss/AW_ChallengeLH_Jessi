@@ -11,12 +11,12 @@ with
 
     ,CreatingPk as (
         select
-            farm_fingerprint(cast(StateProvinceId as string)) as Pk_StateProvince
+            farm_fingerprint(cast(TerritoryId as string)) as Pk_Territory
+            , TerritoryId
             , StateProvinceId
             , StateProvinceAbbreviation
             , CountryRegionCode
             , RegionName
-            , TerritoryId
         from StateProvinceStagingAndPk
     )
 

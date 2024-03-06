@@ -1,19 +1,25 @@
 version: 2
 
 models:
-  - name: 'Country_State'
+  - name: 'Dim_Address'
     description: 'The source is from the Adventure Works repository'
     schema: sap_adw
     tables:
-      - name: 'Country_State'
+      - name: 'Dim_Address'
         description: 'This table brings the stateprovinceid , and it is the principal table for join with int_Person
           This column brings the abbreviation of the Country Region name. ex: US, FR'
         columns:
-          - name: 'Fk_StateProvince'
-            description: 'This column is the Pk from this table, transformed'
+          - name: 'Sk_Territory'
+            description: 'This column is the Sk from this table'
             tests:
               - unique
               - not_null
+
+          - name: 'Fk_CountryRegion'
+            description: 'transformed name in this table'
+
+          - name: 'Fk_PrincipalAddress'
+            description: 'This column brings the abbreviation of the Region name. ex: Arizona, AZ'
 
           - name: 'StateProvinceId'
             description: 'transformed name in this table'
@@ -39,11 +45,17 @@ models:
           - name: 'CountryName'
             description: 'This column brings the name of the Country'
 
+          - name: 'PrincipalAddressId'
+            description: 'Pk of this table'
+
           - name: 'AddressRoadName'
             description: 'This column is brings the road name of the address'
           
           - name: 'AddressCityName'
             description: 'This column brings the name of the address city'
+
+          - name: 'StateProvinceId'
+            description: 'This column is one of the Pk from this table, is going to be used for join with other table'
 
           - name: 'PostalCode'
             description: 'This column brings the postal code description'

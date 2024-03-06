@@ -4,11 +4,6 @@ with
         from {{ ref('stg_erp_Person') }}
     )
 
-    , AddressTable as (
-        select *
-        from {{ ref('stg_erp_Address') }}
-    )
-
     , BusinessAddressTable as (
         select *
         from {{ ref('stg_erp_Business_Entity_Address') }}
@@ -32,31 +27,18 @@ with
 
     , SecondJoinTable as (
         select
-            AddressTable.Pk_PrincipalAddress as Fk_PrincipalAddress
-            , AddressTable.AddressRoadName
-            , AddressTable.AddressCityName
-            , AddressTable.StateProvinceId
-            , AddressTable.PostalCode
-            , FirstJoinTable.*
-        from FirstJoinTable
-        inner join AddressTable
-            on FirstJoinTable.AddressId = AddressTable.AddressId
-    )
-
-    , ThirdJoinTable as (
-        select
             EmailAddressTable.Pk_EmailAddress as Fk_EmailAddress
             , EmailAddressTable.EmailAddressId
             , EmailAddressTable.EmailAddress
-            , SecondJoinTable.*
-        from SecondJoinTable
+            , FirstJoinTable.*
+        from FirstJoinTable
         inner join EmailAddressTable
-            on SecondJoinTable.BusinessPersonId = EmailAddressTable.BusinessPersonId
+            on FirstJoinTable.BusinessPersonId = EmailAddressTable.BusinessPersonId
     )
 
     , NewPersonTable as (
         select *
-        from ThirdJoinTable
+        from SecondJoinTable
     )
 
 select *
