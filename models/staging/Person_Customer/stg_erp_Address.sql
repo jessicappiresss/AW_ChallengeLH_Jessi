@@ -12,7 +12,7 @@ with
     ,CreatingPk as (
         select
             farm_fingerprint(cast(AddressId as string)) as Pk_PrincipalAddress
-            , AddressId
+            , AddressId as PrincipalAddressId
             , AddressRoadName
             , AddressCityName
             , StateProvinceId

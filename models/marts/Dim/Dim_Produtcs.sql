@@ -30,6 +30,8 @@ with
             , ProductModelCode
             , SellStartDate
             , ProductUnavailableDate
+            , ProductCategoryId
+            , ProductsubcategoryId
         from ProductPrincipalTable
     )
 

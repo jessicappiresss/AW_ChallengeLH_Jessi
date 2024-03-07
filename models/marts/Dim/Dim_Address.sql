@@ -18,6 +18,7 @@ with
             , AddressRoadName
             , AddressCityName
             , PostalCode
+            , PrincipalAddressId
         from AddressTable
     )
 

@@ -32,6 +32,7 @@ with
     , SecondJoinTable as (
         select
             AddressTable.Pk_PrincipalAddress as Fk_PrincipalAddress
+            , AddressTable.PrincipalAddressId
             , AddressTable.AddressRoadName
             , AddressTable.AddressCityName
             , AddressTable.PostalCode
