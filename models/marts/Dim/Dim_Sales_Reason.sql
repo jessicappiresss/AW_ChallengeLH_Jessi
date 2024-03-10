@@ -15,7 +15,7 @@ with
             , SalesOrderHeaderSalesReasonTable.Pk_SalesOrder
             , SalesReasonTable.*
         from SalesReasonTable
-        inner join SalesOrderHeaderSalesReasonTable
+        left join SalesOrderHeaderSalesReasonTable
             on SalesReasonTable.SalesReasonId = SalesOrderHeaderSalesReasonTable.SalesReasonId
     )
 

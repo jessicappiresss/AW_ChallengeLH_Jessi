@@ -48,7 +48,7 @@ with
             , SalesOrderHeader.OrderTotalValue
             , SalesOrderDetailTable.*
         from SalesOrderDetailTable
-        inner join SalesOrderHeader
+        left join SalesOrderHeader
             on SalesOrderDetailTable.SalesOrderId = SalesOrderHeader.SalesOrderId
     )
 
@@ -56,10 +56,10 @@ with
         select
             Customer.Pk_Customer as Fk_Customer
             , Customer.PersonId
-            , Customer.Storeid
+            , Customer.StoreId
             , FirstJoinSOD.*
         from FirstJoinSOD
-        inner join Customer
+        left join Customer
             on FirstJoinSOD.CustomerId = Customer.CustomerId
     )
 
@@ -95,10 +95,11 @@ with
     , FinalJoinSOD as (
         select
             Store.StoreName
+            , Store.BusinessPersonId as StoreBusinessPersonId
             , FourthJoinSOD.*
         from FourthJoinSOD
         left join Store
-            on FourthJoinSOD.BusinessPersonId = Store.BusinessPersonId
+            on FourthJoinSOD.SalespersonId = Store.SalespersonId
     )
 
     , CreatingPk as (

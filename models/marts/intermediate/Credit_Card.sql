@@ -15,8 +15,8 @@ with
             , PersonCreditCard.Pk_BusinessPerson
             , CreditCard.*
         from CreditCard
-            left join PersonCreditCard
-                on CreditCard.CreditCardId = PersonCreditCard.CreditCardId
+        left join PersonCreditCard
+            on CreditCard.CreditCardId = PersonCreditCard.CreditCardId
     )
 
     , CreatingPk as (

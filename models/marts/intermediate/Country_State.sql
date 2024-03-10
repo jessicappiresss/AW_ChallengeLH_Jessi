@@ -38,7 +38,7 @@ with
             , AddressTable.PostalCode
             , FirstJoinTable.*
         from FirstJoinTable
-        inner join AddressTable
+        left join AddressTable
             on FirstJoinTable.StateProvinceId = AddressTable.StateProvinceId
     )
 

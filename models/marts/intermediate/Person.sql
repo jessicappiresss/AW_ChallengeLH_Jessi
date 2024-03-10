@@ -21,7 +21,7 @@ with
             , BusinessAddressTable.AddressTypeId
             , PersonTable.*
         from PersonTable
-        inner join BusinessAddressTable
+        left join BusinessAddressTable
             on PersonTable.BusinessPersonId = BusinessAddressTable.BusinessPersonId
     )
 
@@ -32,7 +32,7 @@ with
             , EmailAddressTable.EmailAddress
             , FirstJoinTable.*
         from FirstJoinTable
-        inner join EmailAddressTable
+        left join EmailAddressTable
             on FirstJoinTable.BusinessPersonId = EmailAddressTable.BusinessPersonId
     )
 

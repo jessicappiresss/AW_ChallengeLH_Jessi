@@ -2,7 +2,7 @@ with
     SalesOrderHeaderStaging as (
         select
             cast(salesorderid as int) as SalesOrderId
-            , cast(territoryid as int) as territoryId
+            , cast(territoryid as int) as TerritoryId
             , cast(creditcardid as int) as CreditCardId
             , cast(customerid as int) as CustomerId
             , cast(salespersonid as int) as SalesPersonId
