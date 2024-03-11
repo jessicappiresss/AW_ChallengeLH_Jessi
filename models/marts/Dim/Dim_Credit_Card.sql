@@ -10,6 +10,7 @@ with
             , Fk_BusinessPerson
             , CreditCardId
             , CardBrandType
+            , BusinessPersonId
         from CreditCardTable
     )
 

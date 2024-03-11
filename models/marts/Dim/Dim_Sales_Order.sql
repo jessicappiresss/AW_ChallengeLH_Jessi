@@ -8,9 +8,7 @@ with
         select
             PK_SalesOrderDetail
             , Fk_SalesOrder
-            , Fk_Customer
-            , Fk_Territory
-            , Fk_BusinessPerson
+            , SalesOrderDetailId
             , SalesOrderId
             , ProductId
             , OrderProductQuantity
@@ -18,12 +16,6 @@ with
             , SpecialOfferId
             , ProductUnitPriceDiscount
             , TerritoryId
-            , TerritoryName
-            , CountryRegionCode
-            , SalesTerritoryAccumulatedYear
-            , TotalSalesYear
-            , CommercialCostsTerritoryYear
-            , CommercialCostsTerritoryPreviousYear
             , CreditCardId
             , CustomerId
             , ShipToAddressId
@@ -36,14 +28,9 @@ with
             , OnlineOrderType
             , OrderSubtotalValue
             , OrderTotalValue
-            , BusinessPersonid
-            , ProjectionAnnualSales
-            , BonusWhenGoalAchieved
-            , TotalPersonSalesYear
-            , TotalSalesPreviousYear
+            , Pk_Customer as Fk_Customer
+            , StoreId
             , SalesPersonId
-            , StoreBusinessPersonId
-            , StoreName
         from SalesOrderPrincipalTable
     )
 

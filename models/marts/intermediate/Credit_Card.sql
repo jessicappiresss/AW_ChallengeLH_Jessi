@@ -25,6 +25,7 @@ with
             , CreditCardId
             , Pk_BusinessPerson as Fk_BusinessPerson
             , CardBrandType
+            , BusinessPersonId
         from CreditCardPrincipalTable
     )
 

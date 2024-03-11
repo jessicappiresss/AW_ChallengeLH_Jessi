@@ -8,108 +8,86 @@ with
         select *
         from {{ ref('Dim_Produtcs') }}
     )
-
-    , SalesReason as (
+    
+    , ReasonTypeTable as (
         select *
         from {{ ref('Dim_Sales_Reason') }}
     )
 
-    , AddressT as (
-        select *
-        from {{ ref('Dim_Address') }}
-    )
-
-    , Person as (
-        select *
-        from {{ ref('Dim_Person') }}
-    )
-
-    , CreditCard as (
+    , CreditCardTable as (
         select *
         from {{ ref('Dim_Credit_Card') }}
     )
 
-    , FactSalesFirst as (
+    , PersonTable as (
+        select *
+        from {{ ref('Dim_Person') }}
+    )
+
+    , AddressTable as (
+        select *
+        from {{ ref('Dim_Address') }}
+    )
+
+    , FctTable as (
         select
             Products.Sk_Products
-            , Products.ProductCategoryId
-            , Products.ProductSubcategoryId
             , Products.ProductName
             , Products.ProductCategoryName
-            , Products.ProductSubCategoryName
-            , Products.ManufactureTypes
-            , Products.ProductMinimumStockQuantity
-            , Products.ProductReorderPoint
-            , Products.ProductStandardCost
             , Products.ProductSellPrice
-            , Products.ManufactureProductInDays
+            , Products.ProductStandardCost
             , SalesOrder.*
         from SalesOrder
         left join Products
             on SalesOrder.ProductId = Products.ProductId
     )
 
-    , FactSalesSecond as (
+    , FctTableJoin2 as (
         select
-            SalesReason.Sk_SalesReason
-            , SalesReason.SalesReasonId
-            , SalesReason.ReasonGivenName
-            , SalesReason.ReasonType
-            , FactSalesFirst.*
-        from FactSalesFirst
-        left join SalesReason
-            on FactSalesFirst.SalesOrderId = SalesReason.SalesOrderId
+            ReasonTypeTable.Sk_SalesReason
+            , ReasonTypeTable.SalesReasonId
+            , ReasonTypeTable.ReasonGivenName
+            , FctTable.*
+        from FctTable
+        left join ReasonTypeTable
+            on FctTable.SalesOrderId = ReasonTypeTable.SalesOrderId
     )
 
-    , FactSalesThird as (
+    , FctTableJoin3 as (
         select
-            AddressT.Sk_Territory
-            , AddressT.StateProvinceAbbreviation
-            , AddressT.RegionName
-            , AddressT.CountryName
-            , AddressT.PrincipalAddressId
-            , AddressT.AddressRoadName
-            , AddressT.AddressCityName
-            , AddressT.PostalCode
-            , FactSalesSecond.*
-        from FactSalesSecond
-        left join AddressT
-            on FactSalesSecond.TerritoryId = AddressT.TerritoryId
+            CreditCardTable.BusinessPersonId
+            , FctTableJoin2.*
+        from FctTableJoin2
+        left join CreditCardTable
+            on FctTableJoin2.CreditCardId = CreditCardTable.CreditCardId
     )
 
-    , FactSalesFourth as (
+    , FctTableJoin4 as (
         select
-            Person.Sk_BusinessPerson
-            , Person.PersonType
-            , Person.PersonTypeDescription
-            , Person.TitleName 
-            , Person.CompleteName
-            , Person.EmailAddressId
-            , Person.EmailAddress
-            , Person.AddressId
-            , Person.AddressTypeId
-            , FactSalesThird.*
-        from FactSalesThird
-        left join Person
-            on FactSalesThird.BusinessPersonId = Person.BusinessPersonId
+            PersonTable.PersonTypeDescription
+            , PersonTable.CompleteName
+            , PersonTable.EmailAddressId
+            , PersonTable.EmailAddress
+            , PersonTable.AddressID
+            , FctTableJoin3.*
+        from FctTableJoin3
+        left join PersonTable
+            on FctTableJoin3.BusinessPersonId = PersonTable.BusinessPersonId
     )
-
-    , FactSalesFinal as (
+    , FctTableFinalJoin as (
         select
-            CreditCard.Sk_CreditCard
-            , CreditCard.CardBrandType
-            , FactSalesFourth.*
-        from FactSalesFourth
-        left join CreditCard
-            on FactSalesFourth.CreditCardId = CreditCard.CreditCardId
-    )
-
-    , CreatingSkFact as (
-        select
-            farm_fingerprint(cast(Pk_SalesOrderDetail as string)) as Sk_FactSales
-            , FactSalesFinal.*
-        from FactSalesFinal
+            AddressTable.StateProvinceAbbreviation
+            , AddressTable.RegionName
+            , AddressTable.CountryRegionCode
+            , AddressTable.CountryName
+            , AddressTable.AddressRoadName
+            , AddressTable.AddressCityName
+            , AddressTable.PostalCode
+            , FctTableJoin4.*
+        from FctTableJoin4
+        left join AddressTable
+            on FctTableJoin4.ShipToAddressId = AddressTable.PrincipalAddressId
     )
 
 select *
-from CreatingSkFact
+from FctTableFinalJoin
