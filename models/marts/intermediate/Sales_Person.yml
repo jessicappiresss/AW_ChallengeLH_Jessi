@@ -34,3 +34,6 @@ models:
 
           - name: 'TotalSalesPreviousYear'
             description: 'Total sales from the previous year'
+
+          - name: 'SellerCompleteName'
+            description: 'SellerCompleteName'

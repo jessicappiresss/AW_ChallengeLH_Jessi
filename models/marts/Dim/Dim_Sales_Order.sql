@@ -31,6 +31,7 @@ with
             , Pk_Customer as Fk_Customer
             , StoreId
             , SalesPersonId
+            , PersonId
         from SalesOrderPrincipalTable
     )
 

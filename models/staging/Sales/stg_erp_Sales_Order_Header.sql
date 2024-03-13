@@ -24,8 +24,8 @@ with
             end as OrderStatus
             , cast(onlineorderflag as string) OnlineOrderFlag
             , case
-                when onlineorderflag = true then 'Order placed by the seller'
-                when onlineorderflag = false then 'Order placed online by the customer'
+                when onlineorderflag = true then 'Order placed online by the customer'
+                when onlineorderflag = false then 'Order placed by the seller'
                 else 'Unknown'
             end as OnlineOrderType
             , cast(subtotal as float64) as OrderSubtotalValue

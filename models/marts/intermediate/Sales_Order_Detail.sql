@@ -41,6 +41,7 @@ with
         select
             CustomerTable.Pk_Customer
             , CustomerTable.StoreId
+            , CustomerTable.PersonId
             , FirstJoinSOD.*
         from FirstJoinSOD
         left join CustomerTable
