@@ -270,3 +270,5 @@ models:
           - name: 'PostalCode'
             description: 'This column brings the postal code description'
 
+          - name: 'SellerCompleteName'
+            description: 'This columns was created in order to be able to indentifie the seller complete name'

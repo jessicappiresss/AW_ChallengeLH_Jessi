@@ -36,4 +36,4 @@ models:
             description: 'Total sales from the previous year'
 
           - name: 'SellerCompleteName'
-            description: 'SellerCompleteName'
+            description: 'This columns was created in order to be able to indentifie the seller complete name in the following tables'
